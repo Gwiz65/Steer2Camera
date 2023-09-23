@@ -12,6 +12,3 @@ A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards t
   - s2c on      - enables Steer2Camera (default)
   - s2c off     - disables Steer2Camera
   - s2c toggle  - toggles Steer2Camera on/off
-
-
-    
