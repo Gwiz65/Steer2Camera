@@ -48,7 +48,7 @@ import com.wurmonline.shared.util.MovementChecker;
 
 public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, Versioned {
 
-	private static final String version = "0.59 beta";
+	private static final String version = "1.0";
 	private byte lastTickMod = 0;
 	private float accuracyMargin = 7.5f;
 	private boolean s2cActive = true;
