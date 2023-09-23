@@ -1,6 +1,6 @@
 # Steer2Camera
 A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards the camera.
-- needs Ago's Client Modlauncher installed.
+- needs Ago's Client ModLauncher installed.
 - extract steer2camera-x.x.zip into Wurm Unlimited WurmLauncher directory.
 
 - Steer2Camera features:
