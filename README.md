@@ -8,7 +8,7 @@ A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards t
   - NOTE: This mod will automatically disable the game option "Rotate Player w/ Mount" because it's counterintuitive.
 - Console Commands
   - s2c on      - enables Steer2Camera (default)
-  - s2c off     - disabels Steer2Camera
+  - s2c off     - disables Steer2Camera
   - s2c toggle  - toggles Steer2Camera on/off
 
 
