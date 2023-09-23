@@ -1,2 +1,2 @@
 # Steer2Camera
-A Wurm Unlimited Client Mod
+A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards the camera
