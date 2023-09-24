@@ -146,7 +146,7 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 			switch (command) {
 			case "on":
 				s2cActive = true;
-				System.out.println("]Steer2Camera] Enabled");
+				System.out.println("[Steer2Camera] Enabled");
 				return true;
 			case "off":
 				s2cActive = false;
