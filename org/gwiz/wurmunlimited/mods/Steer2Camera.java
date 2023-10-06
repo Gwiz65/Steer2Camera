@@ -28,6 +28,7 @@
 package org.gwiz.wurmunlimited.mods;
 
 import java.io.PrintWriter;
+import java.util.Properties;
 import java.util.Set;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -36,6 +37,7 @@ import javassist.CannotCompileException;
 import javassist.NotFoundException;
 import org.gotti.wurmunlimited.modloader.classhooks.HookException;
 import org.gotti.wurmunlimited.modloader.classhooks.HookManager;
+import org.gotti.wurmunlimited.modloader.interfaces.Configurable;
 import org.gotti.wurmunlimited.modloader.interfaces.Initable;
 import org.gotti.wurmunlimited.modloader.interfaces.Versioned;
 import org.gotti.wurmunlimited.modloader.interfaces.WurmClientMod;
@@ -46,11 +48,11 @@ import com.wurmonline.client.console.ActionClass;
 import com.wurmonline.client.options.Options;
 import com.wurmonline.shared.util.MovementChecker;
 
-public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, Versioned {
+public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, Versioned, Configurable {
 
 	private static final String version = "1.0";
 	private byte lastTickMod = 0;
-	private float accuracyMargin = 7.5f;
+	private float accuracyMargin = 0.0f;
 	private boolean s2cActive = true;
 
 	@CallbackApi
@@ -95,6 +97,11 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 			}
 		}
 		return keys;
+	}
+
+	@Override
+	public void configure(Properties properties) {
+		accuracyMargin = Float.parseFloat(properties.getProperty("accuracyMargin", Float.toString(accuracyMargin)));
 	}
 
 	@Override
