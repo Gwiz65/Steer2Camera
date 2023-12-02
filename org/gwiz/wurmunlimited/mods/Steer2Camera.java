@@ -50,7 +50,7 @@ import com.wurmonline.shared.util.MovementChecker;
 
 public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, Versioned, Configurable {
 
-	private static final String version = "1.0";
+	private static final String version = "1.1";
 	private byte lastTickMod = 0;
 	private float accuracyMargin = 0.0f;
 	private boolean s2cActive = true;
@@ -163,9 +163,21 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 				s2cActive = !s2cActive;
 				System.out.printf("[Steer2Camera] %s%n", s2cActive ? "Enabled" : "Disabled");
 				return true;
+			case "set-margin":
+				if (args.length <= 2) {
+					System.out.printf("[Steer2Camera] Current accuracy margin = %.2f%n", accuracyMargin);
+					return true;
+				}
+				try {
+					accuracyMargin = Float.parseFloat(args[2]);
+					System.out.printf("[Steer2Camera] Accuracy margin set to %.2f%n", accuracyMargin);
+				} catch (NumberFormatException e) {
+					System.out.println("[Steer2Camera] Accuracy margin must be a number!");
+				}
+				return true;
 			}
 		}
-		System.out.println("[Steer2Camera] Valid commands are: on, off, toggle");
+		System.out.println("[Steer2Camera] Valid commands are: on, off, toggle, set-margin");
 		return true;
 	}
 
