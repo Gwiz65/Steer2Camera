@@ -2,11 +2,13 @@
 A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards the camera.
 
 - **Steer2Camera features:**
+
   - Works similar to Wurm Online's "Steer mount towards camera" option.
   - Will turn mount/vehicle/boat only when moving forwards, backwards or when autorun is engaged.
   - NOTE: This mod will automatically disable the game option "Rotate Player w/ Mount" because it's counterintuitive.
 
 - **Console Commands:**
+
 | Command | Description |
 | :--- | :--- |
 | s2c on | enables Steer2Camera (default) |
