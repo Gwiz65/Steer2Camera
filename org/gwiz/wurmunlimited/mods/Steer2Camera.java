@@ -52,7 +52,7 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 
 	private static final String version = "1.1";
 	private byte lastTickMod = 0;
-	private float accuracyMargin = 0.0f;
+	private float accuracyMargin = 10.0f;
 	private boolean s2cActive = true;
 
 	@CallbackApi
