@@ -7,6 +7,7 @@ A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards t
   - Will turn mount/vehicle/boat only when moving forwards, backwards or when autorun is engaged.
   - NOTE: This mod will automatically disable the game option "Rotate Player w/ Mount" because it's counterintuitive.
 
+
 - **Console Commands:**
 
 | Command | Description |
@@ -16,6 +17,7 @@ A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards t
 | s2c toggle | toggles Steer2Camera on/off |
 | s2c set-margin | displays current accuracy margin value |
 | s2c set-margin NUMBER | sets accuracy margin |
+
 
 - **Accuracy Margin:**
 
