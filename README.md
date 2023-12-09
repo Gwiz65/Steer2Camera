@@ -30,6 +30,6 @@ A mod for Wurm Unlimited Client that steers mounts, vehicles and boats towards t
   
   - Release 1.1 - Added configurabe accuracy margin
   
-  - Release 1.2 - Bugfix: Fixed issue where toon would get stuck sliding left or right after disembarking & added "version" console command              
+  - Release 1.2 - Fixed bug where toon would get stuck sliding left or right after disembarking & added "version" console command              
   
     
