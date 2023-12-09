@@ -46,27 +46,27 @@ import org.gotti.wurmunlimited.modsupport.console.ModConsole;
 import org.gotti.wurmunlimited.modloader.callbacks.CallbackApi;
 import com.wurmonline.client.console.ActionClass;
 import com.wurmonline.client.options.Options;
+import com.wurmonline.client.renderer.cell.CreatureCellRenderable;
 import com.wurmonline.shared.util.MovementChecker;
 
 public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, Versioned, Configurable {
-
-	private static final String version = "1.1";
+	private static final String version = "1.2";
 	private byte lastTickMod = 0;
 	private float accuracyMargin = 10.0f;
 	private boolean s2cActive = true;
 
 	@CallbackApi
-	public Set<ActionClass> getAdjustedKeys(Set<ActionClass> keys, boolean autoRun, float xRotUsed,
-			float xCarrierRotUsed) {
-		if (s2cActive) {
-			if (lastTickMod != 0) {
-				if (lastTickMod == 1)
-					keys.remove(ActionClass.MOVE_RIGHT);
-				if (lastTickMod == 2)
-					keys.remove(ActionClass.MOVE_LEFT);
-				lastTickMod = 0;
-				return keys;
-			}
+	public Set<ActionClass> getAdjustedKeys(Set<ActionClass> keys, CreatureCellRenderable carrierCreature,
+			boolean autoRun, float xRotUsed, float xCarrierRotUsed) {
+		if (lastTickMod != 0) {
+			if (lastTickMod == 1)
+				keys.remove(ActionClass.MOVE_RIGHT);
+			if (lastTickMod == 2)
+				keys.remove(ActionClass.MOVE_LEFT);
+			lastTickMod = 0;
+			return keys;
+		}
+		if (s2cActive && (carrierCreature != null)) {
 			if (keys.contains(ActionClass.MOVE_FORWARD) || keys.contains(ActionClass.MOVE_BACK))
 				autoRun = false;
 			boolean f = keys.contains(ActionClass.MOVE_FORWARD) || autoRun;
@@ -111,8 +111,8 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 					.getCtClass("com.wurmonline.client.game.PlayerObj");
 			HookManager.getInstance().addCallback(ctPlayerObj, "steer2camera", this);
 			ctPlayerObj.getDeclaredMethod("gametick")
-					.insertBefore("if (this.carrierCreature != null) this.keys = this.steer2camera.getAdjustedKeys("
-							+ "this.keys, this.autoRun, this.xRotUsed, this.xCarrierRotUsed);\n");
+					.insertBefore("this.keys = this.steer2camera.getAdjustedKeys(this.keys, this.carrierCreature, "
+							+ "this.autoRun, this.xRotUsed, this.xCarrierRotUsed);\n");
 		} catch (NotFoundException | CannotCompileException e) {
 			appendToFile(e);
 			throw new HookException(e);
@@ -175,9 +175,12 @@ public class Steer2Camera implements WurmClientMod, Initable, ConsoleListener, V
 					System.out.println("[Steer2Camera] Accuracy margin must be a number!");
 				}
 				return true;
+			case "version":
+				System.out.printf("[Steer2Camera] Steer2Camera release %s%n", version);
+				return true;
 			}
 		}
-		System.out.println("[Steer2Camera] Valid commands are: on, off, toggle, set-margin");
+		System.out.println("[Steer2Camera] Valid commands are: on, off, toggle, set-margin, version");
 		return true;
 	}
 
